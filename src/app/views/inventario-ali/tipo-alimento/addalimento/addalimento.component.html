@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="card-h1">Inventario de Alimento</div>
+    <div class="card-body">
+      <div *ngIf="!submitted">
+        <div class="card-form">
+          <form [formGroup]="formulario" (ngSubmit)="submit()">
+            <h3>Registrar Entrada de Alimento</h3>
+            <div class="form-row">
+              
+              <div class="col-md-6">
+                <label for="tipoAlimento">Tipo de Alimento</label>
+                <input
+                  name="tipoAlimento" 
+                  type="text" 
+                  formControlName="tipoAlimento" 
+                  placeholder="Escribir aquí" 
+                  id="tipoAlimento" 
+                   />
+                   <div *ngIf="tipoAlimentoFieldInvalid">
+                    <mat-error *ngIf="tipoAlimento?.hasError('required')">
+                      El Tipo de Alimento es Obligatorio
+                    </mat-error>
+                  </div>
+              </div>
+                  
+  
+            </div>
+            <div class="container-btn">
+              <button class="btn btn-new" type="submit" [disabled]="!formulario.valid">Guardar</button>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+      <div *ngIf="submitted">
+        <h3>Creaste una nueva Entrada de Alimento!</h3>
+        <button class="btn-new" (click)="nuevoTipoAlimento()">Crear Nueva</button>
+      </div>
+    </div>
+  </div>

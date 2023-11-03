@@ -1,0 +1,81 @@
+<div class="card">
+    <div class="card-h1">Editar Lote</div>
+    <div class="card-body">
+        <div class="card-form">
+          <form (ngSubmit)="guardarCambiosLote()" #editarForm="ngForm" [formGroup]="formulario">
+            <div class="form-row">
+              
+              <div class="col-md-6">
+                <label for="nombreLote">Nombre del Lote</label>
+                <input name="nombreLote" type="text" formControlName="nombreLote" id="nombreLote" />
+                <div *ngIf="nombreLoteFieldInvalid">
+                  <mat-error *ngIf="nombreLote?.hasError('required')">
+                    El Nombre del Lote es Obligatorio
+                  </mat-error>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="numeroAnimales">Número de Animales</label>
+                <input name="numeroAnimales" type="text" formControlName="numeroAnimales" id="numeroAnimales" />
+                <div *ngIf="numeroAnimalesFieldInvalid">
+                  <mat-error *ngIf="numeroAnimales?.hasError('required')">
+                    El Número de Animales es Obligatorio
+                  </mat-error>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="proveedor">Proveedor</label>
+                <select name="proveedor" type="text" formControlName="proveedor" id="proveedor">
+                  <option value="0">Seleccione un Proveedor</option>
+                  <option *ngFor="let item of ProveedorList" value="{{item.id}}">
+                    {{item.nombre}}
+                  </option>
+                </select>
+                  <div *ngIf="proveedorFieldInvalid">
+                    <mat-error *ngIf="proveedor?.hasError('required')">
+                      El Proveedor es Obligatorio
+                    </mat-error>
+                  </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="especies">Especie</label>
+                <select name="especies" type="text" formControlName="especies" id="especies">
+                  <option value="0">Seleccione una Especie</option>
+                  <option *ngFor="let item of EspeciesList" value="{{item.id}}">
+                    {{item.nombreEspecie}}
+                  </option>
+                </select>
+                  <div *ngIf="especiesFieldInvalid">
+                    <mat-error *ngIf="especies?.hasError('required')">
+                      La Especie es Obligatoria
+                    </mat-error>
+                  </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="unidadP">Unidad Productiva</label>
+                <select name="unidadP" type="text" formControlName="unidadP" id="unidadP">
+                  <option value="0">Seleccione una Especie</option>
+                  <option *ngFor="let item of UnidadPList" value="{{item.id}}">
+                    {{item.nombreUnidadP}}
+                  </option>
+                </select>
+                  <div *ngIf="unidadPFieldInvalid">
+                    <mat-error *ngIf="unidadP?.hasError('required')">
+                      La Unidad Productiva es Obligatoria
+                    </mat-error>
+                  </div>
+              </div>
+
+            </div>
+            <div class="container-btn">
+              <button type="submit" class="btn btn-new" [disabled]="!formulario.valid">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+  

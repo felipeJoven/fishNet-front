@@ -1,0 +1,23 @@
+<p>editalimento works!</p>
+<div class="container">
+    <div class="form-group"></div>
+    <table id="dataTable" class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Tipo de Alimento</th>
+          <th>Fecha de Registro</th> 
+          <th>Acciones</th>      
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of tipoAlimento; let i = index" class="tipo-alimento-item">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ item.tipoAlimento }}</td>
+          <td>{{ item.fechaCreacion }}</td>         
+          <td><button class="delete" (click)="eliminarTipoAlimento(item.id)">Eliminar</button></td>
+        </tr>
+      </tbody>
+    </table>  
+    <button routerLink="/inventario/tipo-alimento" class="btn-en bg-[#EC6708] rounded h-10 w-15 text-[#fff] hover:bg-[#fff] hover:text-[#EC6708] hover:border border-[#EC6708]">Registrar Tipo de Alimento</button>
+  </div>

@@ -1,0 +1,60 @@
+<div class="card">
+  <div class="card-h1">Inventario de Alimento</div>
+  <div class="card-body">
+    <div *ngIf="!submitted">
+    <div class="card-form">
+      <form [formGroup]="formulario" (ngSubmit)="submit()">
+        <h3>Registrar salida de alimento</h3>
+        <div class="form-row">
+
+
+          <div class="col-md-6">
+            <label for="numeroFactura">Numero de factura</label>
+            <input name="numeroFactura" type="text" formControlName="numeroFactura" placeholder="Numero de factura">
+            <div *ngIf="numeroFacturaFieldInvalid">
+              <mat-error *ngIf="numeroFactura?.hasError('required')">
+                El numero de factura es Obligatoria
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="numeroKilos">Numero de kilos</label>
+            <input name="numeroKilos" type="text" formControlName="numeroKilos" placeholder="Numero de factura">
+            <div *ngIf="numeroKilosFieldInvalid">
+              <mat-error *ngIf="numeroKilos?.hasError('required')">
+                El numero de kilos es Obligatoria
+              </mat-error>
+            </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <label for="lote">Lote</label>
+            <select name="lote" type="text" formControlName="lote" id="lote">
+              <option value="0">Selecionar Lote</option>
+              <option *ngFor="let item of LoteList" value="{{item.id}}">
+                {{item.nombreLote}}
+              </option>
+            </select>
+              <div *ngIf="loteFieldInvalid">
+                <mat-error *ngIf="lote?.hasError('required')">
+                  El lote es Obligatorio
+                </mat-error>
+              </div>
+          </div>
+
+        </div>
+        <div class="container-btn">
+          <button class="btn btn-new" type="submit" [disabled]="!formulario.valid">Guardar</button>
+        </div>
+      </form>
+      </div>
+    </div>
+    <div *ngIf="submitted">
+      <h3>Creaste un nuevo Registro de salida de Alimento!</h3>
+      <button class="btn-new" (click)="nuevaSalida()">Crear Nueva</button>
+      <button routerLink="/inventario/consultar-salida" class="btn-new">Ver Registros</button>
+    </div>
+  </div>
+</div>

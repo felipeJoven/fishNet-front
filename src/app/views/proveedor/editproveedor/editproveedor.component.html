@@ -1,0 +1,116 @@
+
+<div class="card">
+  <div class="card-h1">Editar Proveedor</div>
+  <div class="card-body">
+    <div class="card-form">
+      <form (ngSubmit)="guardarCambiosProveedor()" #editarForm="ngForm" [formGroup]="formulario">
+        <div class="form-row">
+
+          <div class="col-md-6">
+            <label>Nombre</label>
+            <input type="text" formControlName="nombre" id="nombre"  name="nombre" required>
+            <div *ngIf="nombreFieldInvalid">
+              <mat-error *ngIf="nombre?.hasError('required')">
+                El Nombre es obligatorio
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Apellido</label>
+            <input type="text" formControlName="apellido" id="apellido"  name="apeliido" required>
+            <div *ngIf="apellidoFieldInvalid">
+              <mat-error *ngIf="apellido?.hasError('required')">
+                El apellido es obligatorio
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Direccion</label>
+            <input type="text" formControlName="direccion" id="direccion"  name="direccion" required>
+            <div *ngIf="telefonoFieldInvalid">
+              <mat-error *ngIf="telefono?.hasError('required')">
+                El telefono es obligatorio
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Teléfono</label>
+            <input type="text" formControlName="telefono" id="telefono"  name="telefono" required>
+            <div *ngIf="telefonoFieldInvalid">
+              <mat-error *ngIf="telefono?.hasError('required')">
+                El telefono es obligatorio
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Correo</label>
+            <input type="text" formControlName="correo" id="correo"  name="correo" required>
+            <div *ngIf="correoFieldInvalid">
+              <mat-error *ngIf="correo?.hasError('required')">
+                El correo es obligatorio
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Razon Social</label>
+            <input type="text" formControlName="razonSocial" id="razonSocial"  name="razonSocial" required>
+            <div *ngIf="razonSocialFieldInvalid">
+              <mat-error *ngIf="razonSocial?.hasError('required')">
+                la razon social es obligatoria
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="tipoProveedor">Tipo de Proveedor</label>
+            <select name="tipoProveedor" type="text" formControlName="tipoProveedor" id="tipoProveedor">
+              <option>Seleccione un Tipo de Proveedor</option>
+              <option *ngFor="let item of tipoProveedorList" value="{{item.id}}">
+                {{item.tipoProveedor}}
+              </option>
+            </select>
+            <div *ngIf="tipoProveedorFieldInvalid">
+              <mat-error *ngIf="tipoProveedor?.hasError('required')">
+                El Tipo de Proveedor es Obligatorio
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="tipoIdentificacion">Tipo de Proveedor</label>
+            <select name="tipoIdentificacion" type="text" formControlName="tipoIdentificacion" id="tipoIdentificacion">
+              <option>Seleccione un Tipo de Proveedor</option>
+              <option *ngFor="let item of tipoIdentificacionList" value="{{item.id}}">
+                {{item.tipoIdentificacion}}
+              </option>
+            </select>
+            <div *ngIf="tipoIdentificacionFieldInvalid">
+              <mat-error *ngIf="tipoIdentificacion?.hasError('required')">
+                El Tipo de Proveedor es Obligatorio
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Número</label>
+            <input type="text" formControlName="numeroIdentificacion" id="numeroIdentificacion"  name="numeroIdentificacion" required>
+            <div *ngIf="numeroIdentificacionFieldInvalid">
+              <mat-error *ngIf="numeroIdentificacion?.hasError('required')">
+                El número de Identificacion es obligatoria
+              </mat-error>
+            </div>
+          </div>
+          
+          
+
+          <button type="submit" class="btn btn-new" [disabled]="!formulario.valid">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
