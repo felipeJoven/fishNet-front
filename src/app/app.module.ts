@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,8 +15,9 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { WelcomeComponent } from './views/welcome/welcome.component';
 import { InventarioAliComponent } from './views/inventario-ali/inventario-ali.component';
 import { SublevelMenuComponent } from './sidenav/sublevel-menu.component';
-import { LoginComponent } from './auth/login/login.component';
+import { LoginComponent } from './views/auth/login/login.component';
 import { Interceptor } from './interceptor/interceptor';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -34,10 +37,13 @@ import { Interceptor } from './interceptor/interceptor';
     FormsModule,
     RouterModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    MatInputModule
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }
+  providers: [ 
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

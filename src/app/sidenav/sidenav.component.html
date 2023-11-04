@@ -1,4 +1,4 @@
-<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''" *ngIf="authService.isAuthenticated()">
     <div class="logo-container">
         <button class="logo" (click)="toggleCollapse()">F</button>
         <div class="logo-text" @fadeInOut *ngIf="collapsed">FishNet</div>
@@ -34,6 +34,8 @@
                         {{data.label}}
                     </span>
                 </a>
+
+                
                 <div *ngIf="collapsed && data.items && data.items.length > 0">
                     <app-sublevel-menu
                         [data]="data"
@@ -43,6 +45,13 @@
                     ></app-sublevel-menu>
                 </div>
             </li>
+            <li class="sidenav-nav-item">
+                <a class="sidenav-nav-link" (click)="logout()">
+                  <i class="sidenav-link-icon fas fa-sign-out-alt"></i>
+                  <span class="sidenav-link-text">Salir</span>
+                </a>
+              </li>
         </ul>
     </div>
 </div>
+

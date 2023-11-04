@@ -19,4 +19,6 @@ export class WelcomeComponent {
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;
   }
+
+  
 }

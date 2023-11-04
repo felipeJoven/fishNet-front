@@ -95,6 +95,6 @@ export const navbarData: INavbarData[] = [
         label: 'Registrar Especies'
       },
     ]
-  },
+  }
 
 ];

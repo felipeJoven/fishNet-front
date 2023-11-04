@@ -24,7 +24,7 @@ import { LoteComponent } from './lote.component';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
   ]
 })
 export class LoteModule { }
